@@ -1,23 +1,27 @@
-import React from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import React, { useState } from 'react';
 
-function MySlider() {
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1
+function Slider({ min, max, step, initialValue, onChange }) {
+  const [value, setValue] = useState(initialValue);
+
+  const handleChange = (event) => {
+    const newValue = event.target.value;
+    setValue(newValue);
+    onChange && onChange(newValue);
   };
+
   return (
-    <Slider {...settings}>
-      <div><h3>1</h3></div>
-      <div><h3>2</h3></div>
-      <div><h3>3</h3></div>
-    </Slider>
+    <div>
+      <input
+        type="range"     
+        min={min}          
+        max={max}         
+        step={step}      
+        value={value}     
+        onChange={handleChange}
+      />
+      <div>數值:{value}</div>
+    </div>
   );
 }
 
-export default MySlider;
+export default Slider;
