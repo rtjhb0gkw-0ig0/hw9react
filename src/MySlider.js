@@ -12,14 +12,14 @@ function Slider({ min, max, step, initialValue, onChange }) {
   return (
     <div>
       <input
-        type="range"     
-        min={min}          
-        max={max}         
-        step={step}      
-        value={value}     
+        type="range"
+        min={min}
+        max={max}
+        step={step}
+        value={value}
         onChange={handleChange}
       />
-      <div>數值:{value}</div>
+      <div>數值: {value}</div>
     </div>
   );
 }
